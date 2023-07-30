@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  meal:
+    image: meal-image:latest
+    container_name: meal
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=${MONGO_REMOTE_URI}
+    depends_on:
+      - mongodb
+    volumes:
+      - ./logs:/usr/src/app/logs
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - '27017:27017'
+volumes:
+  mongodb-data:
