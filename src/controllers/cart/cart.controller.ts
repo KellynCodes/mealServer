@@ -1,5 +1,3 @@
-import { ProductDto } from './../../services/product/Dto/produc.dto';
-import { ProductService } from './../../services/product/product.service';
 import { RequestQuery } from './../../data/Dtos/request.query.dto';
 import { CartService } from './../../services/cart/cart.service';
 import {
