@@ -1,32 +1,47 @@
-import { AppService } from './../../services/app/app.service';
+import { HttpResponse } from 'src/data/Dtos/http.response.dto';
+import { AppService } from '../../services/cart/app/app.service';
+import { Response } from 'express';
 import {
   Body,
   Controller,
   Get,
+  HttpStatus,
+  Param,
   ParseFilePipeBuilder,
   Post,
+  Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Express } from 'express';
+import { createReadStream } from 'fs';
+import { join } from 'path';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  @Get()
-  sayHello() {
-    return this.appService.getHello();
+  @Get('uploads/:path')
+  seeUploadedFile(@Param('path') imgPath: string, @Res() res: Response) {
+    try {
+      const readStream = createReadStream(
+        join(__dirname, '../../..', 'uploads', imgPath),
+      );
+      readStream.pipe(res);
+    } catch (error) {
+      return error;
+    }
   }
 
-  @UseInterceptors(FileInterceptor('file'))
   @Post('file')
-  uploadFile(@Body() body: string, @UploadedFile() file: Express.Multer.File) {
-    return {
-      body,
-      file: file.buffer.toString(),
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    const response: HttpResponse<{ ImgPath: string }> = {
+      statusCode: HttpStatus.OK,
+      message: 'File upload successful',
+      data: {
+        ImgPath: `${process.env.SERVER_URL}/${file.path}`,
+      },
     };
+    return response;
   }
 
   @UseInterceptors(FileInterceptor('file'))

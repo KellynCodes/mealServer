@@ -1,14 +1,14 @@
+import { Express } from 'express';
 import { ApiProperty } from '@nestjs/swagger';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { IsNotEmpty } from 'class-validator';
-import { ProductCategories } from '../enums/product/productCategores';
-import { ProductSizes } from '../enums/product/productSizes';
-import { ProductColor } from '../enums/product/ProductColor';
+import { ProductCategories } from '../enums/product/foodCategores';
+import { Date, Document } from 'mongoose';
 
 @Schema({
   timestamps: true,
 })
-export class Product {
+export class Product extends Document {
   @IsNotEmpty()
   @Prop()
   @ApiProperty({
@@ -28,14 +28,6 @@ export class Product {
   @IsNotEmpty()
   @Prop()
   @ApiProperty({
-    description: 'property image url',
-    example: 'https://meals/uploads/image-part.png',
-  })
-  img: string;
-
-  @IsNotEmpty()
-  @Prop()
-  @ApiProperty({
     description: 'property categories',
     example: 'fruit',
     type: ProductCategories,
@@ -45,36 +37,30 @@ export class Product {
   @IsNotEmpty()
   @Prop()
   @ApiProperty({
-    description: 'property sizes',
-    example: 'small',
-    type: ProductSizes,
-  })
-  size: ProductSizes[];
-
-  @IsNotEmpty()
-  @Prop()
-  @ApiProperty({
-    description: 'property colors',
-    example: 'red',
-    type: ProductColor,
-  })
-  color: ProductColor[];
-
-  @IsNotEmpty()
-  @Prop()
-  @ApiProperty({
     description: 'price of product',
-    example: 5000000000,
+    example: 5000,
   })
   price: number;
 
-  @IsNotEmpty()
   @Prop()
   @ApiProperty({
     description: 'price of product',
     example: true,
   })
   InStock: boolean;
+
+  @IsNotEmpty()
+  @Prop()
+  @ApiProperty({
+    description: 'price of product',
+    example: './assets/uploads/products/iapfkadaadfiakdf.png',
+  })
+  img: string;
+
+  @IsNotEmpty()
+  @Prop({ type: Date })
+  @ApiProperty({})
+  date: Date;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

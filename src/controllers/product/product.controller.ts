@@ -1,5 +1,5 @@
 import { RoleGuard } from '../../guards/role.guard';
-import { ProductDto } from '../../services/product/Dto/produc.dto';
+import { ProductDto } from '../../services/product/Dto/product.dto';
 import { UpdateProductDto } from './../../services/product/Dto/update-product.dto';
 import { HttpResponse } from './../../data/Dtos/http.response.dto';
 import { RequestQuery } from './../../data/Dtos/request.query.dto';
@@ -15,16 +15,19 @@ import {
   Query,
   UseGuards,
   Delete,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { ApiParam, ApiTags, ApiQuery } from '@nestjs/swagger';
+import { FileInterceptor } from '@nestjs/platform-express/multer';
 
 @ApiTags('Products')
 @Controller('product')
-@UseGuards(RoleGuard)
 export class ProductController {
   constructor(private productService: ProductService) {}
-
+  
   @Post('/new')
+  @UseGuards(RoleGuard)
   async addProduct(
     @Body() model: CreateProductDto,
   ): Promise<HttpResponse<CreateProductDto>> {

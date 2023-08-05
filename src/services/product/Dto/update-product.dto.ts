@@ -1,3 +1,3 @@
-import { ProductDto } from './produc.dto';
+import { ProductDto } from './product.dto';
 
 export class UpdateProductDto extends ProductDto {}

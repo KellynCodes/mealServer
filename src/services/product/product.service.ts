@@ -1,6 +1,6 @@
 import { ObjectIdValidator } from './../../utils/validate.objectId';
 import { UpdateProductDto } from './Dto/update-product.dto';
-import { ProductDto } from './Dto/produc.dto';
+import { ProductDto } from './Dto/product.dto';
 import { HttpResponse } from './../../data/Dtos/http.response.dto';
 import { RequestQuery } from './../../data/Dtos/request.query.dto';
 import { Injectable, HttpStatus, BadRequestException } from '@nestjs/common';
@@ -23,7 +23,7 @@ export class ProductService {
     if (product != null) {
       throw new BadRequestException('Product already exist');
     }
-
+    console.log(model);
     product = await this.productModel.create(model);
 
     const response: HttpResponse<ProductDto> = {

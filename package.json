@@ -2,8 +2,8 @@
   "name": "mealsbackend",
   "version": "0.0.1",
   "description": "",
-  "author": "kellyncodes",
-  "private": true,
+  "author": "engkelly",
+  "private": false,
   "license": "MIT",
   "scripts": {
     "build": "nest build",
