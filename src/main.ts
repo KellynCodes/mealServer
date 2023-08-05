@@ -8,7 +8,7 @@ import * as express from 'express';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: process.env.ClIENT_URL, // Replace with your allowed origin(s)
+    origin: process.env.CLIENT_URL, // Replace with your allowed origin(s)
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Set this to true if your app uses sessions/authentication
     allowedHeaders: 'Content-Type, Accept, Authorization',
