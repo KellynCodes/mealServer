@@ -1,6 +1,7 @@
+import { ImageMiddleware } from './../../middlewares/file.middleware';
 import { ObjectIdValidator } from './../../utils/validate.objectId';
 import { HttpExceptionFilter } from '../../middlewares/global.exc.handler';
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from '../../services/cart/app/app.service';
 import { UserModule } from '../user/user.module';
@@ -45,4 +46,8 @@ import { multerOptions } from '../../config/multer.config';
     ObjectIdValidator,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(ImageMiddleware).forRoutes('uploads'); // adjust this to your actual path
+  }
+}

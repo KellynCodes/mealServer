@@ -1,4 +1,4 @@
-import { RoleGuard } from '../../guards/role.guard';
+import { AuthGuard } from '../../guards/auth.guard';
 import { ProductDto } from '../../services/product/Dto/product.dto';
 import { UpdateProductDto } from './../../services/product/Dto/update-product.dto';
 import { HttpResponse } from './../../data/Dtos/http.response.dto';
@@ -25,9 +25,9 @@ import { FileInterceptor } from '@nestjs/platform-express/multer';
 @Controller('product')
 export class ProductController {
   constructor(private productService: ProductService) {}
-  
+
   @Post('/new')
-  @UseGuards(RoleGuard)
+  @UseGuards(AuthGuard)
   async addProduct(
     @Body() model: CreateProductDto,
   ): Promise<HttpResponse<CreateProductDto>> {
