@@ -6,9 +6,9 @@ import { join } from 'path';
 @Injectable()
 export class ImageMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    const imagePath = join(__dirname, '../..', req.originalUrl); // you may need to adjust this based on your folder structure
+    const imagePath = join(__dirname, '../..', req.originalUrl);
     if (!existsSync(imagePath)) {
-      res.status(404).send({ message: 'Image not found' }); // or return a default image if you want
+      res.status(404).send({ message: 'Image not found' });
     } else {
       next();
     }
