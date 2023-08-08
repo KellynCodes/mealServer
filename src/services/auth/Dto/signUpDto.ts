@@ -15,7 +15,7 @@ export class SignUpDto {
     example: '+2349430489340',
   })
   @IsNotEmpty()
-  phone: number;
+  phone: string;
 
   @ApiProperty({
     description: 'Users country',

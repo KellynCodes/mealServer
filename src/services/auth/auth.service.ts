@@ -14,7 +14,6 @@ import { SignUpDto } from './Dto/signUpDto';
 import { LoginDto } from './Dto/loginDto';
 import { ResetPasswordDto } from './Dto/reset.password';
 import { HttpResponse } from '../../data/Dtos/http.response.dto';
-import { UserRoles } from '../../data/enums/user/userRoles';
 
 @Injectable()
 export class AuthService {

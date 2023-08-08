@@ -10,7 +10,6 @@ import { ProductService } from 'src/services/product/product.service';
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
-
     MongooseModule.forFeature([{ name: 'Product', schema: ProductSchema }]),
   ],
   controllers: [ProductController],
