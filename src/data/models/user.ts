@@ -11,7 +11,7 @@ export class User extends Document {
     required: [true, 'phone cannot be empty.'],
     unique: [true, 'Phone number already exist.'],
   })
-  phone: number;
+  phone: string;
 
   @Prop()
   username: string;

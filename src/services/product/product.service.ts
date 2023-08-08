@@ -23,7 +23,6 @@ export class ProductService {
     if (product != null) {
       throw new BadRequestException('Product already exist');
     }
-    console.log(model);
     product = await this.productModel.create(model);
 
     const response: HttpResponse<ProductDto> = {

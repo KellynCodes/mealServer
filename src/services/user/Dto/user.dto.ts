@@ -7,7 +7,7 @@ export class UserDto {
     description: 'Users phone number.',
   })
   @IsNotEmpty()
-  phone: number;
+  phone: string;
 
   @ApiProperty({
     example: 'Kelly',
