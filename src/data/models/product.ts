@@ -3,12 +3,12 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { IsNotEmpty } from 'class-validator';
 import { ProductCategories } from '../enums/product/foodCategores';
-import { Date, Document } from 'mongoose';
+import { Date } from 'mongoose';
 
 @Schema({
   timestamps: true,
 })
-export class Product extends Document {
+export class Product {
   @IsNotEmpty()
   @Prop()
   @ApiProperty({

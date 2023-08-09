@@ -59,6 +59,8 @@ export class AppModule implements NestModule, OnApplicationBootstrap {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(ImageMiddleware)
-      .forRoutes({ path: 'uploads', method: RequestMethod.GET });
+      .forRoutes('uploads/products')
+      .apply(ImageMiddleware)
+      .forRoutes('uploads/users');
   }
 }
