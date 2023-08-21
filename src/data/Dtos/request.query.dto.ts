@@ -1,5 +1,5 @@
 export interface RequestQuery {
   page: number;
-  pageSize: number;
+  limit: number;
   keyword: string;
 }
