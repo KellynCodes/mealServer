@@ -1,5 +1,5 @@
-import { RequestQuery } from './../../data/Dtos/request.query.dto';
-import { CartService } from './../../services/cart/cart.service';
+import { RequestQuery } from '../../data/Dtos/request.query.dto';
+import { CartService } from '../../services/cart/cart.service';
 import {
   Body,
   Controller,
@@ -10,8 +10,8 @@ import {
   Query,
 } from '@nestjs/common';
 import { ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { HttpResponse } from '../../data/Dtos/http.response.dto';
 import { CartDto } from '../../services/cart/Dto/addToCart.dto';
+import { HttpResponse } from '../../data/Dtos/http.response.dto';
 
 @ApiTags('Cart')
 @Controller('cart')

@@ -1,5 +1,5 @@
 # Specify a base image
-FROM node:18
+FROM node:18-alpine AS build
 
 # A directory within the virtualized Docker environment
 WORKDIR /usr/src/app

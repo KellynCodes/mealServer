@@ -1,6 +1,6 @@
 import { multerUsersOptions } from './../../config/multer/multer.user.config';
 import { multerProductOptions } from './../../config/multer/multer.product.config';
-import { HttpResponse } from 'src/data/Dtos/http.response.dto';
+import { HttpResponse } from '../../data/Dtos/http.response.dto';
 import { Response } from 'express';
 import {
   Body,

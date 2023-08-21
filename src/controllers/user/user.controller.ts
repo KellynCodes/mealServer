@@ -1,7 +1,6 @@
-import { User } from './../../data/models/user';
-import { HttpResponse } from './../../data/Dtos/http.response.dto';
-import { RequestQuery } from './../../data/Dtos/request.query.dto';
-import { UserDto } from './../../services/user/Dto/user.dto';
+import { RequestQuery } from '../../data/Dtos/request.query.dto';
+import { User } from '../../data/models/user';
+import { UserDto } from '../../services/user/Dto/user.dto';
 import {
   ApiBadRequestResponse,
   ApiParam,
@@ -9,7 +8,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { UserService } from './../../services/user/user.service';
+import { UserService } from '../../services/user/user.service';
 import {
   Body,
   Controller,
@@ -19,6 +18,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { HttpResponse } from '../../data/Dtos/http.response.dto';
 
 @Controller('user')
 @ApiTags('User')

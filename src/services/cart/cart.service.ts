@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Cart } from '../../data/models/cart';
 import { CartDto } from './Dto/addToCart.dto';
-import { HttpResponse } from 'src/data/Dtos/http.response.dto';
+import { HttpResponse } from '../../data/Dtos/http.response.dto';
 
 @Injectable()
 export class CartService {
@@ -50,7 +50,7 @@ export class CartService {
 
     await this.cartModel.findByIdAndDelete(id).exec();
     const response: HttpResponse = {
-      message: 'Delete was successful',
+      message: 'Deleted',
       statusCode: HttpStatus.OK,
     };
     return response;
@@ -116,7 +116,7 @@ export class CartService {
     const keyword: string =
       query.keyword == null ? (query.keyword = '') : query.keyword;
     const page: number = query.page <= 0 ? (query.page = 1) : query.page;
-    const pageSize = query.pageSize < 10 ? (query.pageSize = 10) : query.page;
+    const pageSize = query.limit < 10 ? (query.limit = 10) : query.page;
     const resPerPage: number = 2;
     const skip: number = resPerPage * (page - 1);
     let filter: {} = {};
