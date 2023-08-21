@@ -1,13 +1,13 @@
+import { RequestQuery } from './../../data/Dtos/request.query.dto';
 import { ObjectIdValidator } from './../../utils/validate.objectId';
 import { UpdateProductDto } from './Dto/update-product.dto';
 import { ProductDto } from './Dto/product.dto';
-import { HttpResponse } from './../../data/Dtos/http.response.dto';
-import { RequestQuery } from './../../data/Dtos/request.query.dto';
 import { Injectable, HttpStatus, BadRequestException } from '@nestjs/common';
 import { Product } from '../../data/models/product';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateProductDto } from './Dto/create-product.dto';
 import { Model } from 'mongoose';
+import { HttpResponse } from '../../data/Dtos/http.response.dto';
 
 @Injectable()
 export class ProductService {

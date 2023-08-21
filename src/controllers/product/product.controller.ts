@@ -15,11 +15,8 @@ import {
   Query,
   UseGuards,
   Delete,
-  UseInterceptors,
-  UploadedFile,
 } from '@nestjs/common';
 import { ApiParam, ApiTags, ApiQuery } from '@nestjs/swagger';
-import { FileInterceptor } from '@nestjs/platform-express/multer';
 
 @ApiTags('Products')
 @Controller('product')

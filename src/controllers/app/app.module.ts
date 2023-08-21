@@ -10,7 +10,7 @@ import {
   RequestMethod,
 } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from '../../services/cart/app/app.service';
+import { AppService } from '../../services/app/app.service';
 import { UserModule } from '../user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
